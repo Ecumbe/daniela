@@ -1,0 +1,178 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #001020, #001931, #013366, hsl(210, 98%, 23%)); /* Degradado azulado marino */
+    overflow: hidden; /* Evita el desplazamiento */
+    height: 100vh;
+    position: relative;
+}
+
+/* Pop-up de bienvenida */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+}
+
+.popup-contenido {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.popup-contenido p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.popup-contenido button {
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-contenido button:hover {
+    background-color: #b71c1c;
+}
+
+/* Contenedor de estrellas */
+#estrellas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite interactuar con el contenido debajo */
+}
+
+/* Estilos para las estrellas */
+.estrella {
+    position: absolute;
+    width: 2px; /* Tamaño de las estrellas */
+    height: 2px;
+    background-color: #fff; /* Color de las estrellas */
+    border-radius: 50%; /* Forma circular */
+    animation: titilar 2s infinite alternate; /* Animación de titilar */
+    opacity: 0; /* Inicialmente invisibles */
+}
+
+/* Animación de titilar */
+@keyframes titilar {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Contenedor de estrellas fugaces */
+#estrellas-fugaces-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite interactuar con el contenido debajo */
+}
+
+/* Estilos para las estrellas fugaces */
+.estrella-fugaz {
+    position: absolute;
+    width: 100px; /* Longitud de la estrella fugaz */
+    height: 2px; /* Grosor de la estrella fugaz */
+    background: linear-gradient(90deg, transparent, #fff); /* Efecto de cola */
+    animation: caerEstrella 2s linear forwards; /* Animación de caída */
+    opacity: 0; /* Inicialmente invisibles */
+}
+
+/* Animación de caída de estrellas fugaces */
+@keyframes caerEstrella {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw) translateY(100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Mensaje romántico */
+.mensaje {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Alinear el texto a la izquierda */
+    color: #fff;
+    z-index: 3;
+    max-width: 90%; /* Ajustar el ancho para que no se acumule en el centro */
+    padding: 10px;
+    width: 100%; /* Ocupar todo el ancho disponible */
+    box-sizing: border-box; /* Incluir el padding en el ancho total */
+    overflow: visible; /* Asegurar que el texto no se corte */
+}
+
+.mensaje h1 {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: aparecerTitulo 3s ease-in-out forwards;
+}
+
+.mensaje p {
+    font-size: 0.8rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: aparecerTexto 1s ease-in-out forwards;
+    animation-delay: 3s;
+}
+
+/* Animación para el título */
+@keyframes aparecerTitulo {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-100px); /* Mover el título hacia arriba */
+    }
+}
+
+/* Animación para el texto */
+@keyframes aparecerTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
